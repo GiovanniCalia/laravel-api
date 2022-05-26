@@ -5158,6 +5158,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'MainPage'
 });
@@ -27962,7 +27971,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("header", [_vm._v("ciao")])
+  return _c("header", [_vm._v("Header")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -27986,9 +27995,46 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main", [_vm._v("main")])
+  return _c(
+    "div",
+    { staticClass: "row" },
+    _vm._l(5, function (i) {
+      return _c(
+        "div",
+        { staticClass: "card g-3", staticStyle: { width: "18rem" } },
+        [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "", alt: "" },
+          }),
+          _vm._v(" "),
+          _vm._m(0, true),
+        ]
+      )
+    }),
+    0
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("h5", { staticClass: "card-title" }, [_vm._v("Card title")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-text" }, [
+        _vm._v(
+          "Some quick example text to build on the card title and make up the bulk of the card's content."
+        ),
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+        _vm._v("Go somewhere"),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 

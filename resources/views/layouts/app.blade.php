@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Boolpress') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/front.js') }}" defer></script>
@@ -21,12 +21,12 @@
 </head>
 <body>
     <x-navbar/>
-    <div class="container">
-        <main>
+    <main>
+        <div class="container">
             <div id="app">
                 @yield('content')
             </div>
-        </main>
-    </div>
+        </div>
+    </main>
 </body>
 </html>
