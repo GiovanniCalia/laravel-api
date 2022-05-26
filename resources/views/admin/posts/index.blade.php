@@ -2,7 +2,7 @@
 
 @section('pageTitle', 'Index home')
 
-@section('content')
+@section('Pagecontent')
 <main class="background_post container">
     <h1>Boolpress</h1>
     {{--<form action="" method="get" class="row  g-3 mb-3 mt-3">

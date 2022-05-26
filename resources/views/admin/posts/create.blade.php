@@ -2,7 +2,7 @@
 
 @section('pageTitle', 'Show post')
 
-@section('content')
+@section('Pagecontent')
 <main>
     <div class="container">
       <div class="row">

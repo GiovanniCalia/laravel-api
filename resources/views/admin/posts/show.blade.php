@@ -2,7 +2,7 @@
 
 @section('pageTitle', $post->title)
 
-@section('content')
+@section('Pagecontent')
 <main class="main_box">
     <div class="text-center my-4 box">
         <img src="{{ $post->image }}" alt="{{ $post->title }}" class="img-fluid">

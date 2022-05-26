@@ -6,18 +6,18 @@
         </li>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                <li class="page-item" :class="{disabled : currentPage === 1}"  @click='getArray(prevPageUrl)'>
-                    <a class="page-link" :href="prevPageUrl">Previous</a>
+                <li class="page-item" :class="{disabled: !prevPageUrl}" @click="getArray(prevPageUrl)">
+                    <a class="page-link">Previous</a>
                 </li>
 
                 <li class="page-item mx-2 d-flex align-items-center">
-                    <form @submit.prevent="getArray(apiUrl + '/?page=' + nNewPage)">
-                        <input type="text" v-model="nNewPage" placeholder="Insert page">
+                    <form @submit.prevent="getArray(apiUrl + '/?page=' + newPage)">
+                        <input type="text" v-model="newPage" placeholder="Insert page">
                     </form>
                 </li>
 
-                <li class="page-item" :class="{disabled : currentPage === LastPage}" @click='getArray(nextPageUrl)'>
-                    <a class="page-link" :href="nextPageUrl">Next</a>
+                <li class="page-item" :class="{disabled: !nextPageUrl}" @click="getArray(nextPageUrl)">
+                    <a class="page-link">Next</a>
                 </li>
             </ul>
         </nav>
@@ -70,6 +70,8 @@ export default {
                     this.lastPageUrl = element.data.response.last_page_url;
                     this.nextPageUrl = element.data.response.next_page_url;
                     this.prevPageUrl = element.data.response.prev_page_url;
+
+                    this.newPage = null
                 })
             }
         }

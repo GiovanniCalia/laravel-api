@@ -23,7 +23,7 @@
     <x-navbar/>
     <main>
         <div class="container">
-            <div id="app">
+            <div>
                 @yield('content')
             </div>
         </div>

@@ -13,6 +13,6 @@
 
     <x-navbar/>
 
-    @yield('content')
+    @yield('Pagecontent')
 </body>
 </html>
