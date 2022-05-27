@@ -16,9 +16,31 @@ const { default: Axios } = require('axios');
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
- import App from './views/App.vue';
+import VueRouter from 'vue-router';
+import App from './views/App.vue';
 
- const app = new Vue({
-     el: '#app',
-     render: h => h(App),
- });
+import HomePage from './pages/HomePage.vue';
+import IndexPage from './pages/IndexPage.vue';
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: HomePage,
+        },
+        {
+            path: '/blog',
+            name: 'IndexPage',
+            component: IndexPage,
+        },
+    ],
+});
+
+const app = new Vue({
+    el: '#app',
+    render: h => h(App),
+    router,
+});
