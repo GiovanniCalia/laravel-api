@@ -1,7 +1,8 @@
 <template>
 <div>
     <HeaderPage/>
-    <MainPage/>
+<!--<MainPage/>-->
+    <router-view></router-view>
 </div> 
 </template>
 

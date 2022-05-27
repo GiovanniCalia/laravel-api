@@ -21,10 +21,12 @@ import App from './views/App.vue';
 
 import HomePage from './pages/HomePage.vue';
 import IndexPage from './pages/IndexPage.vue';
+import AboutUs from './pages/AboutUs.vue';
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
+    mode: 'history',
     routes: [
         {
             path: '/',
@@ -35,6 +37,10 @@ const router = new VueRouter({
             path: '/blog',
             name: 'IndexPage',
             component: IndexPage,
+        },
+        {   path: '/about',
+            name: 'AboutUs',
+            component: AboutUs,
         },
     ],
 });

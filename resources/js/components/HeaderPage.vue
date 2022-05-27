@@ -1,8 +1,8 @@
 <template>
-    <header>
-        <router-link :to="{ name: 'home'}">Home</router-link>
-        <router-link :to="{ name: 'IndexPage'}">Posts</router-link>
-        <h1 class="text-center mt-3">Header</h1>
+    <header class="text-center my-3">
+        <router-link :to="{ name: 'home'}" class="btn btn-dark">Home</router-link>
+        <router-link :to="{ name: 'IndexPage'}" class="btn btn-dark">See Posts</router-link>
+        <router-link :to="{ name: 'AboutUs'}" class="btn btn-dark">About us</router-link>
     </header>
 </template>
 
