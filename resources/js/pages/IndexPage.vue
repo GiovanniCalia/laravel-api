@@ -29,7 +29,7 @@
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">{{ post.title }}</h5>
                 <p class="card-text">{{ post.description }}</p>
-                <a href="#" class="btn btn-primary mt-auto">View</a>
+                <router-link :to="{ name: 'ShowPage', params: {slug: post.slug}}" class="btn btn-primary mt-auto">Click</router-link>
             </div>
         </div>
     </div>

@@ -21,6 +21,7 @@ import App from './views/App.vue';
 
 import HomePage from './pages/HomePage.vue';
 import IndexPage from './pages/IndexPage.vue';
+import ShowPage from './pages/ShowPage.vue';
 import AboutUs from './pages/AboutUs.vue';
 
 Vue.use(VueRouter);
@@ -37,6 +38,12 @@ const router = new VueRouter({
             path: '/blog',
             name: 'IndexPage',
             component: IndexPage,
+        },
+        {
+            path: '/blog/:slug',
+            name: 'ShowPage',
+            component: ShowPage,
+            props: true,
         },
         {   path: '/about',
             name: 'AboutUs',
