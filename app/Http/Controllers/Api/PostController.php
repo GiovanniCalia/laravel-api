@@ -55,6 +55,7 @@ class PostController extends Controller
         $post = Post::where('slug', $slug)->first();
 
         return response()->json([
+            'success' => true,
             'response' => $post
         ]);
  
