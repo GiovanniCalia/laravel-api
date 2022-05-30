@@ -14,9 +14,9 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label"><h4>Message</h4></label>
-                <input type="text" name="description" class="form-control" id="creator" v-model="message">
+                <textarea type="text" name="description" class="form-control" id="creator" v-model="message"></textarea>
             </div>
-            <button class="btn btn-primary">invio</button>
+            <button class="btn btn-primary">Send</button>
         </form>
     </div>
 </template>

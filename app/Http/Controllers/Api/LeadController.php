@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Lead;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;;
+use App\Mail\MailToAdmin;
+use App\Mail\MailToLead;
+
 
 class LeadController extends Controller
 {
@@ -35,7 +40,16 @@ class LeadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+            $lead = Lead::create($request->all());
+    
+            Mail::to('John@boolpress.com')->send(new MailToAdmin($lead));
+            Mail::to($lead->email)->send(new MailToLead($lead));
+            
+            return response()->json([
+                'validity'  => 'Ok',
+            ]);
+        }
     }
 
     /**

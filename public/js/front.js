@@ -5406,8 +5406,7 @@ __webpack_require__.r(__webpack_exports__);
       if (http) {
         Axios.get(http).then(function (element) {
           if (element.data.success) {
-            _this.post = element.data.response;
-            console.log(_this.post);
+            _this.post = element.data.response.data;
           } else {
             console.log('Unable to access');
           }
@@ -29223,7 +29222,7 @@ var render = function () {
         _c("div", { staticClass: "mb-3" }, [
           _vm._m(2),
           _vm._v(" "),
-          _c("input", {
+          _c("textarea", {
             directives: [
               {
                 name: "model",
@@ -29246,7 +29245,7 @@ var render = function () {
           }),
         ]),
         _vm._v(" "),
-        _c("button", { staticClass: "btn btn-primary" }, [_vm._v("invio")]),
+        _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Send")]),
       ]
     ),
   ])

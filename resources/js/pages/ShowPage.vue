@@ -25,8 +25,7 @@ export default {
                 Axios.get(http)
                 .then(element => {
                     if (element.data.success){
-                        this.post = element.data.response;
-                        console.log(this.post);
+                        this.post = element.data.response.data;
                     } else {
                         console.log('Unable to access');
                     }
