@@ -80,7 +80,7 @@ class PostController extends Controller
             return response()->json([
                 'success'   => true,
                 'response'  => [
-                    'data'      => $post,
+                    'data'  => $post,
                 ]
             ]);
         } else {

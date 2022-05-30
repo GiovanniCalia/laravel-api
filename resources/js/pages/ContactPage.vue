@@ -1,29 +1,56 @@
 <template>
-    <div>
-        <h1 class="text-center">Contacts</h1>
-        <form  @submit.prevent="SendMessage" action="api/contact" method="post">
-            <div class="mb-3">
-                <label for="name" class="form-label"><h4>Name</h4></label>
-                <input type="text" name="name" class="form-control" id="creator" v-model="name">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Contacts</h1>
+                <div v-if="validity" class="alert alert-success" role="alert">
+                    {{ validity }}
+                </div>
+                <form @submit.prevent="SendMessage" action="api/contact" method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" v-model="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">email</label>
+                        <input type="text" class="form-control" id="email" name="email" v-model="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" name="message" v-model="message"></textarea>
+                    </div>
+                    <button class="btn btn-primary">Send</button>
+                </form>
             </div>
-
-            <div class="mb-3">
-                <label for="email" class="form-label"><h4>Email</h4></label>
-                <input type="text" name="email" class="form-control" id="creator" v-model="email">
-            </div>
-
-            <div class="mb-3">
-                <label for="description" class="form-label"><h4>Message</h4></label>
-                <textarea type="text" name="description" class="form-control" id="creator" v-model="message"></textarea>
-            </div>
-            <button class="btn btn-primary">Send</button>
-        </form>
+        </div>
     </div>
 </template>
 
+
 <script>
 export default {
-    name: 'ContactPage'
+    name: 'ContactPage',
+    data() {
+        return{
+            ApiUrl: "/api/contact",
+                name: "",
+                email: "",
+                message: "",
+                validity: "",
+
+        }
+    },
+    methods: {
+        SendMessage() {
+            Axios.post(this.ApiUrl, {
+                name: this.name,
+                email: this.email,
+                message: this.message,
+            })
+            .then(element => this.validity = res.data.validity)
+        }
+        
+    }
 }
 </script>
 

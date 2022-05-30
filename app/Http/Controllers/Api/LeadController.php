@@ -43,7 +43,7 @@ class LeadController extends Controller
         {
             $lead = Lead::create($request->all());
     
-            Mail::to('John@boolpress.com')->send(new MailToAdmin($lead));
+            Mail::to('Johnca@boolpress.com')->send(new MailToAdmin($lead));
             Mail::to($lead->email)->send(new MailToLead($lead));
             
             return response()->json([

@@ -11,14 +11,16 @@ class MailToLead extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $lead;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($lead)
     {
-        //
+        $this->lead = $lead;
     }
 
     /**
@@ -28,6 +30,8 @@ class MailToLead extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.MailToLead');
+        return $this->view('mails.MailToLead', [
+            'lead' => $this->lead,
+        ]);
     }
 }
