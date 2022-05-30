@@ -37,13 +37,13 @@
     </form>--}}
     <ol class="d-flex flex-wrap justify-content-around cards_main">
         @foreach ($posts as $post)
-            <li class="text-center" data-id="{{ $post->id }}">
+            <li class="text-center" data-id="{{ $post->slug }}">
                 <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="img-fluid">
-                <h3><a href="{{ route('admin.posts.show', $post->id) }}">{{ $post->title }}</a></h3>
+                <h3><a href="{{ route('admin.posts.show', $post->slug) }}">{{ $post->title }}</a></h3>
                 <div>Created by: <strong>{{ $post->creator }}.</strong></div>
                 <div>{{ $post->tags->pluck('name')->join(', ') }}</div>
                 @if (Auth::user()->id === $post->user_id)
-                   <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
+                   <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->slug) }}">Edit</a>
                 @endif
                 @if (Auth::user()->id === $post->user_id)
                    <button class="btn btn-danger btn-delete">Delete</button>
