@@ -5,7 +5,7 @@
 @section('Pagecontent')
 <main class="main_box">
     <div class="text-center my-4 box">
-        <img src="{{ $post->image }}" alt="{{ $post->title }}" class="img-fluid">
+        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="img-fluid">
         <h1>{{ $post->title }}</h1>
         <div>Created by: <strong>{{ $post->user->name }}</strong></div>
         <div>Category: <strong>{{ $post->category->name }}</strong></div> @if ($post->user->userInfo && $post->user->userInfo->phone_number)

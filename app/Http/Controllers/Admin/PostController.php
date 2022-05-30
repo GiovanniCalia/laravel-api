@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -39,6 +40,23 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
+        /*$posts = $this->composeQuery($request);
+
+        $posts = $posts->paginate(20);
+
+        $queries = $request->query();
+        unset($queries['page']);
+        $posts->withPath('?' . http_build_query($queries, '', '&'));
+
+        $users = User::all();
+
+        return view('admin.posts.index', [
+            'posts'         => $posts,
+            'users'         => $users,
+            'request'       => $request
+        ]);*/
+
+        
         $posts = Post::paginate(30);
 
         return view('admin.posts.index', compact('posts'));
@@ -76,11 +94,29 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->getValidators(null));
+
+        $data = $request->all();
+
+        $img_path = Storage::put('uploads', $data['image']);
+
+        $saveData = [
+            'user_id' => Auth::user()->id,
+            'image'   => $img_path
+        ] + $data;
+
+
+        $save = Post::create($saveData);
+        $save->tags()->attach($saveData['tags']);
+        return redirect()->route('admin.posts.show', $save->id);
+
+
+
+        /*$request->validate($this->getValidators(null));
         $saveData = $request->all() + ['user_id' => Auth::user()->id];
 
         $save = Post::create($saveData);
         $save->tags()->attach($saveData['tags']);
-        return redirect()->route('admin.posts.show', $save->id); //id
+        return redirect()->route('admin.posts.show', $save->id); //id*/
     }
 
     /**

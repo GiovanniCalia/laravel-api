@@ -13,8 +13,30 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        /*$attributes = $request->all();
+
+        if (array_key_exists('home', $attributes)) {
+            return response()->json([
+                'success'   => true,
+                'response'  => [
+                    'data'      => Post::inRandomOrder()->limit(4)->get(),
+                ]
+            ]);
+        }
+
+
+        $posts = $this->composeQuery($request);
+
+        $posts = $posts->with(['user', 'category', 'tags'])->paginate(15);
+        return response()->json([
+            'success'    => true,
+            'response'  => $posts,
+        ]);*/
+
+
         $posts = Post::paginate(16);
 
         return response()->json([
@@ -52,12 +74,27 @@ class PostController extends Controller
      */
     public function show($slug)
     {
-        $post = Post::where('slug', $slug)->first();
+
+        $post = Post::with(['user', 'category', 'tags'])->where('slug', $slug)->first();
+        if ($post) {
+            return response()->json([
+                'success'   => true,
+                'response'  => [
+                    'data'      => $post,
+                ]
+            ]);
+        } else {
+            return response()->json([
+                'success'   => false,
+            ]);
+        }
+
+        /*$post = Post::where('slug', $slug)->first();
 
         return response()->json([
             'success' => true,
             'response' => $post
-        ]);
+        ]);*/
  
     }
 

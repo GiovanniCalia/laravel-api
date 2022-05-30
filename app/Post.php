@@ -20,7 +20,7 @@ class Post extends Model
     ];
 
     static public function generateSlug($ogStr){
-        $baseSlug = Str::of($ogStr)->slug('-') . '';
+        $baseSlug = Str::of($ogStr)->slug('-') . ''; //oppure->__toString()
         $slug = $baseSlug;
         $_i = 1;
         while(Post::where('slug', $slug)->first()){
