@@ -8,7 +8,7 @@
       <div class="row">
           <div class="col-8 offset-2">
               <h1 class="text-center">Add a post</h1>
-              <form method="POST" action="{{ route('admin.posts.update', $post->id) }}" class="mb-3">
+              <form method="POST" action="{{ route('admin.posts.update', $post->slug) }}" class="mb-3" enctype="multipart/form-data">
                   @csrf
                   @method('PUT')
                   <div class="mb-3">
@@ -36,7 +36,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
 
-                  <fieldset class="">
+                  <fieldset>
                     <legend>tags</legend>
                     @foreach ($tags as $tag)
                       <input type="checkbox" name="tags[]" id="tag-{{ $tag->id }}" value="{{ $tag->id }}"
@@ -62,13 +62,26 @@
                   @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
-                  <div class="mb-3">
+
+
+                 {{--<div class="mb-3">
                     <label for="image" class="form-label"><h4>{{ __('image') }}</h4></label>
                     <input type="text" name="image" class="form-control" id="image" value="{{ old('image', $post->image) }}">
                   </div>
                   @error('image')
                     <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror--}}
+
+                  <div class="mb-3">
+                    <label for="image" class="form-label"><h4>{{ __('image') }}</h4></label>
+                    <input class="form-control" type="file" id="image" name="image" accept="image/*">
+                  </div>
+                  <img src="{{ asset('storage/' . $post->image) }}" alt="" class="img-fluid">
+                  @error('image')
+                    <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
+
+
                   <div class="mb-3">
                     <label for="date_creation" class="form-label"><h4>{{ __('date_creation') }}</h4></label>
                     <input type="date" name="date_creation" class="form-control" id="date_creation" value="{{ old('date_creation', $post->date_creation) }}">
@@ -80,9 +93,6 @@
               </form>
               <div class="text-center links my-4">
                 <a class="btn btn-primary" href="{{ url()->previous()}}" id="gray">Back</a>
-                {{--<a class="btn btn-primary" href="{{ route('admin.posts.index') }}">Return to posts list</a>
-                <a class="btn btn-primary" href="{{ route('admin.posts.indexUser') }}">Return to my posts list</a>
-                <a class="btn btn-primary" href="{{ route('admin.home') }}" id="red">Return to home</a>--}}
               </div>
           </div>
       </div>

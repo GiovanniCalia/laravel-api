@@ -91,13 +91,26 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
         $request->validate($this->getValidators(null));
 
         $data = $request->all();
 
-        $img_path = Storage::put('uploads', $data['image']);
+        if (array_key_exists('image', $data)) {
+            Storage::delete($post->image);
+            $img_path = Storage::put('uploads', $data['image']);
+            $saveData = [
+                'user_id' => Auth::user()->id,
+                'image'    => $img_path
+            ] + $data;
+            $save = Post::create($saveData);
+            $save->tags()->attach($saveData['tags']);
+            return redirect()->route('admin.posts.show', $save->slug);
+        }
+
+    
+       /*$img_path = Storage::put('uploads', $data['image']);
 
         $saveData = [
             'user_id' => Auth::user()->id,
@@ -107,7 +120,8 @@ class PostController extends Controller
 
         $save = Post::create($saveData);
         $save->tags()->attach($saveData['tags']);
-        return redirect()->route('admin.posts.show', $save->slug);
+        return redirect()->route('admin.posts.show', $save->slug);*/
+
 
 
 
@@ -169,10 +183,19 @@ class PostController extends Controller
         if (Auth::user()->id !== $post->user_id) abort(403);
 
         $request->validate($this->getValidators($post));
-
         $postData = $request->all();
+        
+        if (array_key_exists('image', $postData)) {
+            Storage::delete($post->image);
+            $img_path = Storage::put('uploads', $postData['image']);
+            $postData = [
+                'image'    => $img_path
+            ] + $postData;
+        }
+
         $post->update($postData);
-        $post->tags()->sync($postData['tags']);
+        if (array_key_exists('tags', $postData)) $post->tags()->sync($postData['tags']);
+        // $post->tags()->sync($postData['tags']);
 
         return redirect()->route('admin.posts.show', $post->slug);
     }

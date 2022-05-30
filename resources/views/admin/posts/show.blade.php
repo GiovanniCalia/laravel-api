@@ -16,7 +16,7 @@
         <div class="links mt-2">
             <a class="btn btn-primary" href="{{ url()->previous()}}" id="gray">Back</a>
             @if (Auth::user()->id === $post->user_id)
-                <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
+                <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->slug) }}">Edit</a>
             @endif
             <a class="btn btn-primary" href="{{ route('admin.posts.index') }}">Return to posts list</a>
             <a class="btn btn-primary" href="{{ route('admin.posts.indexUser') }}">Return to my posts list</a>

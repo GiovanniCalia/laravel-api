@@ -8,7 +8,7 @@
       <div class="row">
           <div class="col-8 offset-2">
               <h1 class="text-center">Add a post</h1>
-              <form method="post" action="{{ route('admin.posts.store') }}" class="mb-3"  enctype="multipart/form-data">
+              <form method="post" action="{{ route('admin.posts.store') }}" class="mb-3" enctype="multipart/form-data">
                   @csrf
                   <div class="mb-3">
                     <label for="title" class="form-label"><h4>{{ __('title') }}</h4></label>
