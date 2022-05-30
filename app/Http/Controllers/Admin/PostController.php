@@ -174,7 +174,7 @@ class PostController extends Controller
         $post->update($postData);
         $post->tags()->sync($postData['tags']);
 
-        return redirect()->route('admin.posts.show', $post->slug); //id
+        return redirect()->route('admin.posts.show', $post->slug);
     }
 
     /**
