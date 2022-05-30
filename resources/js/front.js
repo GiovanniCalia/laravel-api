@@ -22,6 +22,7 @@ import App from './views/App.vue';
 import HomePage from './pages/HomePage.vue';
 import IndexPage from './pages/IndexPage.vue';
 import ShowPage from './pages/ShowPage.vue';
+import ContactPage from './pages/ContactPage.vue';
 import AboutUs from './pages/AboutUs.vue';
 
 Vue.use(VueRouter);
@@ -44,6 +45,10 @@ const router = new VueRouter({
             name: 'ShowPage',
             component: ShowPage,
             props: true,
+        },
+        {   path: '/contact',
+            name: 'ContactPage',
+            component: ContactPage,
         },
         {   path: '/about',
             name: 'AboutUs',
