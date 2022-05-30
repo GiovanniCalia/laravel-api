@@ -27628,21 +27628,20 @@ var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
     el: '#app',
 });*/
 
-/*const btnSlugger = document.querySelector('#btn-slugger');
+
+var btnSlugger = document.querySelector('#btn-slugger');
+
 if (btnSlugger) {
-    btnSlugger.addEventListener('click', function() {
-        const eleSlug = document.querySelector('#slug');
-        const title = document.querySelector('#title').value;
-
-        Axios.post('/admin/slugger', {
-            ogStr: title,
-        })
-            .then(function (response) {
-                eleSlug.value = response.data.slug;
-            })
+  btnSlugger.addEventListener('click', function () {
+    var eleSlug = document.querySelector('#slug');
+    var title = document.querySelector('#title').value;
+    Axios.post('/admin/slugger', {
+      ogStr: title
+    }).then(function (response) {
+      eleSlug.value = response.data.slug;
     });
-}*/
-
+  });
+}
 
 var confirmationOverlay = document.querySelector('#confirmation-overlay');
 

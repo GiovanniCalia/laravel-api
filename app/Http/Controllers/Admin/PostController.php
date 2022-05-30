@@ -26,7 +26,7 @@ class PostController extends Controller
             'category_id'    => 'required|exists:App\Category,id',
             'creator'        => 'required|max:50',
             'description'    => 'required',
-            'image'          => 'nullable|url|max:255',
+            'image'          => 'nullable|image',
             'date_creation'  => 'required|max:20',
             'tags'           => 'exists:App\Tag,id'
         ];

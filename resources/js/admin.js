@@ -34,7 +34,7 @@ const { default: Axios } = require('axios');
 });*/
 
 
-/*const btnSlugger = document.querySelector('#btn-slugger');
+const btnSlugger = document.querySelector('#btn-slugger');
 if (btnSlugger) {
     btnSlugger.addEventListener('click', function() {
         const eleSlug = document.querySelector('#slug');
@@ -47,7 +47,7 @@ if (btnSlugger) {
                 eleSlug.value = response.data.slug;
             })
     });
-}*/
+}
 
 
 const confirmationOverlay = document.querySelector('#confirmation-overlay');

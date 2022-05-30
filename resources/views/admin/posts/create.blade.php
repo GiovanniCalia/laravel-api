@@ -41,7 +41,7 @@
                   <fieldset>
                     <legend>tags</legend>
                     @foreach ($tags as $tag)
-                      <input type="checkbox" name="tags" id="tag-{{ $tag->id }}" value="{{ $tag->id }}"
+                      <input type="checkbox" name="tags[]" id="tag-{{ $tag->id }}" value="{{ $tag->id }}"
                       @if (in_array($tag->id, old('tags', []))) checked @endif>
                       <label for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
                     @endforeach
@@ -75,7 +75,7 @@
 
                   <div class="mb-3">
                     <label for="image" class="form-label"><h4>{{ __('image') }}</h4></label>
-                    <input class="form-control" type="file" id="image" name="image" accept="image/*">
+                    <input class="form-control" type="file" id="image" name="image" accept="image/*" value="{{ old('image') }}">
                   </div>
                   @error('image')
                     <div class="alert alert-danger">{{ $message }}</div>
