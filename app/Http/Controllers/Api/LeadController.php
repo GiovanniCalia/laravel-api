@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Lead;
 use Illuminate\Http\Request;
@@ -43,11 +43,11 @@ class LeadController extends Controller
         {
             $lead = Lead::create($request->all());
     
-            Mail::to('Johnca@boolpress.com')->send(new MailToAdmin($lead));
+            Mail::to('admin.John@boolpress.com')->send(new MailToAdmin($lead));
             Mail::to($lead->email)->send(new MailToLead($lead));
             
             return response()->json([
-                'validity'  => 'Ok',
+                'validity'  => 'Mail inviata',
             ]);
         }
     }

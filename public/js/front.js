@@ -5284,8 +5284,9 @@ __webpack_require__.r(__webpack_exports__);
         email: this.email,
         message: this.message
       }).then(function (element) {
-        return _this.validity = res.data.validity;
+        return _this.validity = element.data.validity;
       });
+      console.log(this.validity);
     }
   }
 });

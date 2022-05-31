@@ -33,10 +33,10 @@ export default {
     data() {
         return{
             ApiUrl: "/api/contact",
-                name: "",
-                email: "",
-                message: "",
-                validity: "",
+            name: "",
+            email: "",
+            message: "",
+            validity: "",
 
         }
     },
@@ -47,7 +47,8 @@ export default {
                 email: this.email,
                 message: this.message,
             })
-            .then(element => this.validity = res.data.validity)
+            .then(element => this.validity = element.data.validity)
+            console.log(this.validity)
         }
         
     }
